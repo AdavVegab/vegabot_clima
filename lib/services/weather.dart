@@ -1,4 +1,26 @@
+import 'package:vegabot_clima/services/location.dart';
+import 'package:vegabot_clima/utilities/constants.dart';
+import 'package:vegabot_clima/services/networking.dart';
+
 class WeatherModel {
+  Location location = Location();
+  Future<dynamic> getLocationWeather() async {
+    await location.getCurrentLocation();
+    var url = kOpenWeatherMapRquestURL +
+        '?lat=${location.latitude}&lon=${location.longitude}&units=metric&appid=$kOpenWeatherMapsAPIKEY';
+    NetworkHelper networkingHelper = NetworkHelper(url);
+    var data = await networkingHelper.getData();
+    return data;
+  }
+
+  Future<dynamic> getCityWeather(cityName) async {
+    var url = kOpenWeatherMapRquestURL +
+        '?q=$cityName&units=metric&appid=$kOpenWeatherMapsAPIKEY';
+    NetworkHelper networkingHelper = NetworkHelper(url);
+    var data = await networkingHelper.getData();
+    return data;
+  }
+
   String getWeatherIcon(int condition) {
     if (condition < 300) {
       return '🌩';
