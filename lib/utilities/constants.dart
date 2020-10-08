@@ -35,6 +35,6 @@ const kTextFieldInputDeco = InputDecoration(
       borderSide: BorderSide.none),
 );
 // APIs
-const kOpenWeatherMapsAPIKEY = '0761c662ba8d05234bb148d0af69f14c';
+const kOpenWeatherMapsAPIKEY = '0761cjkh662ba8d05234bb148d0af69f14c';
 const kOpenWeatherMapRquestURL =
     'https://api.openweathermap.org/data/2.5/weather';
